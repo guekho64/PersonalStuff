@@ -390,16 +390,16 @@ public class MoreCustomOresExtendedWorkbenchAddOn {
 					}
 					public static class ToolMaterials {
 						public static final EnumToolMaterial orichalcum = MoreCustomOres.toolGemaDeOricalco;
-						public static final EnumToolMaterial platinum = MoreCustomOres.toolLingoteDePlatino;
 						public static final EnumToolMaterial titanium = MoreCustomOres.toolLingoteDeTitanio;
+						public static final EnumToolMaterial platinum = MoreCustomOres.toolLingoteDePlatino;
 						public static final EnumToolMaterial quartz = MoreCustomOres.toolQuartz;
 						public static final EnumToolMaterial ender = MoreCustomOres.toolEnder;
 						public static final EnumToolMaterial enderSword = MoreCustomOres.toolEnderSword;
 					}
 					public static class ArmorMaterials {
 						public static final EnumArmorMaterial orichalcum = MoreCustomOres.armorGemaDeOricalco;
-						public static final EnumArmorMaterial platinum = MoreCustomOres.armorLingoteDePlatino;
 						public static final EnumArmorMaterial titanium = MoreCustomOres.armorLingoteDeTitanio;
+						public static final EnumArmorMaterial platinum = MoreCustomOres.armorLingoteDePlatino;
 						public static final EnumArmorMaterial quartz = MoreCustomOres.armorCuarzo;
 						public static final EnumArmorMaterial stone = MoreCustomOres.armorPiedra;
 					}
