@@ -1,5 +1,3 @@
-/* Copyright guekho64 © All Rights Reserved 2017 */
-
 package guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common;
 
 import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseArmorDurability;
@@ -372,13 +370,8 @@ public class MoreCustomOresExtendedWorkbenchAddOn {
 						public static final String[] extendedArmorParts = {Environment.Misc.wordExtended + Methods.FundamentalMethods.ToUppercaseFirstLetter(armorParts[0]), Environment.Misc.wordExtended + Methods.FundamentalMethods.ToUppercaseFirstLetter(armorParts[1]), Environment.Misc.wordExtended + Methods.FundamentalMethods.ToUppercaseFirstLetter(armorParts[2]), Environment.Misc.wordExtended + Methods.FundamentalMethods.ToUppercaseFirstLetter(armorParts[3])};
 					}
 					public static class Materials {
-						public static final String enderWeapon = "enderWeapon";
-						public static final String enderTool = "enderTool";
-						public static final String orichalcum = "orichalcum";
-						public static final String titanium = "titanium";
-						public static final String platinum = "platinum";
-						public static final String quartz = "quartz";
-						public static final String stone = "stone";
+						public static final String generalArray[] = {"orichalcum", "titanium", "platinum", "quartz", "stone"};
+						public static final String enderArray[] = {"enderWeapon", "enderTool"};
 					}
 					public static class CreativeTabs {
 						public static final String extended = Environment.Misc.wordExtended + Methods.FundamentalMethods.ToUppercaseFirstLetter(Environment.Misc.wordTab);
@@ -405,10 +398,10 @@ public class MoreCustomOresExtendedWorkbenchAddOn {
 					}
 					public static class Tools {}
 					public static class Armor {
-						public static final CustomTypes.Items.Armor.Extended extendedHelmetOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(0, Names.Materials.orichalcum, ArmorMaterials.orichalcum, CreativeTabs.mainTab);
-						public static final CustomTypes.Items.Armor.Extended extendedChestplateOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(1, Names.Materials.orichalcum, ArmorMaterials.orichalcum, CreativeTabs.mainTab);
-						public static final CustomTypes.Items.Armor.Extended extendedPantsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(2, Names.Materials.orichalcum, ArmorMaterials.orichalcum, CreativeTabs.mainTab);
-						public static final CustomTypes.Items.Armor.Extended extendedBootsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(3, Names.Materials.orichalcum, ArmorMaterials.orichalcum, CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedHelmetOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(0, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedChestplateOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(1, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedPantsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(2, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedBootsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(3, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
 					}
 					public static class CreativeTabs {
 						public static final CustomTypes.MainTab mainTab = new CustomTypes.MainTab(Names.CreativeTabs.extended);
@@ -420,7 +413,7 @@ public class MoreCustomOresExtendedWorkbenchAddOn {
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent event) {
 		if(FMLCommonHandler.instance().getEffectiveSide().isClient()) {
-			Content.Mod.Declaration.Renderers.armorRenderer = new int[] {RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.orichalcum), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.titanium), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.platinum), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.quartz), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.stone)};
+			Content.Mod.Declaration.Renderers.armorRenderer = new int[] {RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.generalArray[0]), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.generalArray[1]), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.generalArray[2]), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.generalArray[3]), RenderingRegistry.addNewArmourRendererPrefix(Environment.Misc.wordExtended + Content.Mod.Names.Materials.generalArray[4])};
 		}
 	}
 	@EventHandler
