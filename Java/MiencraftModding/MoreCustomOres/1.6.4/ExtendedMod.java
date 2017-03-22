@@ -1,12 +1,11 @@
 package guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common;
 
-import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseArmorDurability;
 import static guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common.MoreCustomOresExtendedWorkbenchAddOn.Main.Content.Mod.Config.Declaration.confiGuekho;
+import static naruto1310.extendedWorkbench.mod_ExtendedWorkbench.extendedValues.increaseArmorDurability;
 import guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common.MoreCustomOresExtendedWorkbenchAddOn.Extra.Utils.CustomTypes;
 import guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common.MoreCustomOresExtendedWorkbenchAddOn.Extra.Utils.Environment;
 import guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common.MoreCustomOresExtendedWorkbenchAddOn.Extra.Utils.Methods;
 import guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common.MoreCustomOresExtendedWorkbenchAddOn.Main.Content;
-import guekho64.mod.blocks.MineralDeAluminio;
 import guekho64.mod.common.MoreCustomOres;
 
 import java.io.File;
@@ -17,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,7 +41,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameData;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.ItemData;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.Side;
@@ -216,7 +213,7 @@ public class MoreCustomOresExtendedWorkbenchAddOn {
 						    public final int EWdamageReduceAmount;
 
 						    /** The EnumArmorMaterial used for this ItemArmor **/
-						    private final EnumArmorMaterial material;
+						    public EnumArmorMaterial material;
 
 						    public Extended(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4, CreativeTabs tab, String uName) {
 						        super(par1, par2EnumArmorMaterial, par3, par4);
@@ -227,6 +224,11 @@ public class MoreCustomOresExtendedWorkbenchAddOn {
 						        this.setMaxDamage(par2EnumArmorMaterial.getDurability(par4));
 						        this.setMaxStackSize(1);
 						        this.setMaxDamage((int)(getMaxDamage() * increaseArmorDurability));
+						    }
+						    
+						    public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
+						    {
+						       return true;
 						    }
 
 						    /**
@@ -382,26 +384,18 @@ public class MoreCustomOresExtendedWorkbenchAddOn {
 						public static int[] armorRenderer;
 					}
 					public static class ToolMaterials {
-						public static final EnumToolMaterial orichalcum = MoreCustomOres.toolGemaDeOricalco;
-						public static final EnumToolMaterial titanium = MoreCustomOres.toolLingoteDeTitanio;
-						public static final EnumToolMaterial platinum = MoreCustomOres.toolLingoteDePlatino;
-						public static final EnumToolMaterial quartz = MoreCustomOres.toolQuartz;
-						public static final EnumToolMaterial ender = MoreCustomOres.toolEnder;
-						public static final EnumToolMaterial enderSword = MoreCustomOres.toolEnderSword;
+						public static final EnumToolMaterial[] generalArray = {MoreCustomOres.toolGemaDeOricalco, MoreCustomOres.toolLingoteDeTitanio, MoreCustomOres.toolLingoteDePlatino, MoreCustomOres.toolQuartz};
+						public static final EnumToolMaterial[] enderArray = {MoreCustomOres.toolEnder, MoreCustomOres.toolEnderSword};
 					}
 					public static class ArmorMaterials {
-						public static final EnumArmorMaterial orichalcum = MoreCustomOres.armorGemaDeOricalco;
-						public static final EnumArmorMaterial titanium = MoreCustomOres.armorLingoteDeTitanio;
-						public static final EnumArmorMaterial platinum = MoreCustomOres.armorLingoteDePlatino;
-						public static final EnumArmorMaterial quartz = MoreCustomOres.armorCuarzo;
-						public static final EnumArmorMaterial stone = MoreCustomOres.armorPiedra;
+						public static final EnumArmorMaterial[] array = {MoreCustomOres.armorGemaDeOricalco, MoreCustomOres.armorLingoteDeTitanio, MoreCustomOres.armorLingoteDePlatino, MoreCustomOres.armorCuarzo, MoreCustomOres.armorPiedra};
 					}
 					public static class Tools {}
 					public static class Armor {
-						public static final CustomTypes.Items.Armor.Extended extendedHelmetOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(0, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
-						public static final CustomTypes.Items.Armor.Extended extendedChestplateOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(1, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
-						public static final CustomTypes.Items.Armor.Extended extendedPantsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(2, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
-						public static final CustomTypes.Items.Armor.Extended extendedBootsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(3, Names.Materials.generalArray[0], ArmorMaterials.orichalcum, CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedHelmetOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(0, Names.Materials.generalArray[0], ArmorMaterials.array[0], CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedChestplateOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(1, Names.Materials.generalArray[0], ArmorMaterials.array[0], CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedPantsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(2, Names.Materials.generalArray[0], ArmorMaterials.array[0], CreativeTabs.mainTab);
+						public static final CustomTypes.Items.Armor.Extended extendedBootsOrichalcum = Methods.SimplifiedMethods.ExtendedArmor(3, Names.Materials.generalArray[0], ArmorMaterials.array[0], CreativeTabs.mainTab);
 					}
 					public static class CreativeTabs {
 						public static final CustomTypes.MainTab mainTab = new CustomTypes.MainTab(Names.CreativeTabs.extended);
