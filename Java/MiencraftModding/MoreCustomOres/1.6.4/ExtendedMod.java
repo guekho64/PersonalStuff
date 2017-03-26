@@ -70,7 +70,7 @@ import net.minecraftforge.common.ISpecialArmor;
 @MCVersion(value=Environment.General.gameVersion)
 public class MoreCustomOresExtendedWorkbenchAddOn {
 	@SidedProxy(serverSide="guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common.Common", clientSide="guekho64.MoreCustomOresExtendedWorkbenchAddOn.files.common.Client")
-	public static Common proxy;
+	public static CommonProxy proxy;
 	@Instance(Environment.General.mod)
 	public static MoreCustomOresExtendedWorkbenchAddOn MoreCustomOresExtendedWorkbenchAddOnInstance = new MoreCustomOresExtendedWorkbenchAddOn();
 	public static class Extra {
