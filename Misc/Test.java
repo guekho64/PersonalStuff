@@ -32,15 +32,18 @@ public final class Main {
     final SimpleImmutableEntry<String, Integer> o = new SimpleImmutableEntry<String, Integer>("o", ((x.getValue() + m.getValue())/2));
     
     
-    String baseCommand = ("python -c" + " ") + (
+    final String baseCommand = ("python -c" + " ") + (
         (( "x=(#*1.0);".replaceAll("\\#", String.valueOf(x.getValue())) +
         "y=($*1.0);".replaceAll("\\$", String.valueOf(y.getValue()))) +
         ( "m=(%*1.0);".replaceAll("\\%", String.valueOf(m.getValue())) +
         "p=(&*1.0);".replaceAll("\\&", String.valueOf(p.getValue())))) +
         "o=(?*1.0);".replaceAll("\\?", String.valueOf(o.getValue())));
     
+    final String extraCommand = "print(p)";
     
-    System.out.println(Exec(ClosePythonCommand(baseCommand.toString() + "print(y)")));
+    final String command = PythonCommand(baseCommand, extraCommand);
+    
+    System.out.println(Exec(command));
     
 
   }
@@ -107,8 +110,8 @@ public final class Main {
     }
   }
 
-  public static final String ClosePythonCommand (final String pythonCommand) {
-    return ( (pythonCommand + ";"));
+  public static final String PythonCommand (final String pythonCommand, final String python) {
+    return (pythonCommand+ (python + ";"));
   }
   
 }
