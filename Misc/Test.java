@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.AbstractMap.SimpleImmutableEntry;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.ZipException;
 
 public final class Main {
 
@@ -39,11 +42,125 @@ public final class Main {
         "p=(&*1.0);".replaceAll("\\&", String.valueOf(p.getValue())))) +
         "o=(?*1.0);".replaceAll("\\?", String.valueOf(o.getValue())));
     
-    final String extraCommand = "print(p)";
+    class PythonCommandObject {
+      final String command;
+      PythonCommandObject (final String command) {
+        this.command = Main.PythonCommand(baseCommand, command);
+      }
+      String getCommand () {
+        return command;
+      }
+      String executeCommand () {
+        return Exec(command);
+      }
+    }
     
-    final String command = PythonCommand(baseCommand, extraCommand);
+    /** Math **/
     
-    System.out.println(Exec(command));
+    boolean firstAttempt = true;
+    
+    float percentage;
+    
+    int interestingIndex1;
+    int interestingIndex2;
+    
+    int preciseIndex = -1;
+    
+    Float finalPercentage = null;
+    
+    @SuppressWarnings("serial")
+    List<Boolean> bList = new ArrayList<Boolean>() {{
+      add(y.getValue() > objectivePercentage);
+      add(p.getValue() > objectivePercentage);
+      add(m.getValue() > objectivePercentage);
+      add(o.getValue() > objectivePercentage);
+      add(x.getValue() > objectivePercentage);
+    }};
+    
+    @SuppressWarnings("serial")
+    List<Boolean> bList2 = new ArrayList<Boolean>() {{
+      add(y.getValue() == objectivePercentage);
+      add(p.getValue() == objectivePercentage);
+      add(m.getValue() == objectivePercentage);
+      add(o.getValue() == objectivePercentage);
+      add(x.getValue() == objectivePercentage);
+    }};
+    
+    String u;
+    String v;
+    
+    try {
+
+      while (true) {
+
+        if (firstAttempt) {
+
+          for (int counter = 0; counter < bList2.size(); ++counter) {
+            if (bList2.get(counter)) {
+              preciseIndex = counter;
+              throw new ZipException();
+            }
+          }
+
+          for (int counter = 0; counter < bList.size(); ++counter) {
+            if ((bList.get(counter) == false) && (bList.get(counter++) == true)) {
+              interestingIndex1 = counter;
+              interestingIndex2 = counter++;
+            }
+            else {
+              throw new RuntimeException("What just happened?");
+            }
+          }
+          
+          if 
+
+          firstAttempt = false;
+
+        }
+        else {
+
+        }
+
+      }
+    }
+    catch (ZipException fictionalProblem) {
+      assert true;
+    }
+    
+    if (preciseIndex != -1) {
+      switch (preciseIndex) {
+        case (0): {
+          System.out.println(y.getValue());
+          break;
+        }
+        case (1): {
+          System.out.println(p.getValue());
+          break;
+        }
+        case (2): {
+          System.out.println(m.getValue());
+          break;
+        }
+        case (3): {
+          System.out.println(o.getValue());
+          break;
+        }
+        case (4): {
+          System.out.println(x.getValue());
+          break;
+        }
+        default: {
+          throw new RuntimeException("Not gud!");
+        }
+      }
+    }
+    
+//    if (finalPercentage != null) {
+//      System.out.println(finalPercentage.floatValue());
+//    }
+//    else {
+//      throw new RuntimeException("Duh!");
+//    }
     
 
   }
