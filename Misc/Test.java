@@ -32,8 +32,15 @@ public final class Main {
     final SimpleImmutableEntry<String, Integer> o = new SimpleImmutableEntry<String, Integer>("o", ((x.getValue() + m.getValue())/2));
     
     
+    String baseCommand = ("python -c" + " ") + (
+        (( "x=(#*1.0);".replaceAll("\\#", String.valueOf(x.getValue())) +
+        "y=($*1.0);".replaceAll("\\$", String.valueOf(y.getValue()))) +
+        ( "m=(%*1.0);".replaceAll("\\%", String.valueOf(m.getValue())) +
+        "p=(&*1.0);".replaceAll("\\&", String.valueOf(p.getValue())))) +
+        "o=(?*1.0);".replaceAll("\\?", String.valueOf(o.getValue())));
     
-    System.out.println(Exec("uname -r"));
+    
+    System.out.println(Exec(ClosePythonCommand(baseCommand.toString() + "print(y)")));
     
 
   }
@@ -62,10 +69,12 @@ public final class Main {
    final BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
    
    String line = "";
-   
+
    while ((line = Solver4(reader)) != null) {
      output.append(line + "\n");
    }
+   
+  
    
    return output.toString();
 
@@ -98,4 +107,8 @@ public final class Main {
     }
   }
 
+  public static final String ClosePythonCommand (final String pythonCommand) {
+    return ( (pythonCommand + ";"));
+  }
+  
 }
