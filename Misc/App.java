@@ -50,12 +50,12 @@ public final class App {
     final GeneralSecurityException generalSecurityException = new GeneralSecurityException();
     final ZipException zipException = new ZipException();
     @SuppressWarnings("serial")
-    final List<Tuple<String, Double>> iList= new ArrayList<Tuple<String, Double>>() {{
-      add(new Tuple<String, Double>("y", 100D));
-      add(new Tuple<String, Double>("p", 75D));
-      add(new Tuple<String, Double>("m", 50D));
-      add(new Tuple<String, Double>("o", 25D));
-      add(new Tuple<String, Double>("x", 0D));
+    final List<Tuple<String, Integer>> iList= new ArrayList<Tuple<String, Integer>>() {{
+      add(new Tuple<String, Integer>("y", 100));
+      add(new Tuple<String, Integer>("p", 75));
+      add(new Tuple<String, Integer>("m", 50));
+      add(new Tuple<String, Integer>("o", 25));
+      add(new Tuple<String, Integer>("x", 0));
     }};
     @SuppressWarnings("serial")
     final List<Tuple<String, Double>> iList2= new ArrayList<Tuple<String, Double>>() {{
@@ -68,11 +68,11 @@ public final class App {
     iList2.get(1).setValue(((((iList2.get(0).getValue() + iList2.get(iList2.size() - 1).getValue())/2) + iList2.get(0).getValue())/2));
     iList2.get(2).setValue(((iList2.get(0).getValue() + iList2.get(iList2.size() - 1).getValue())/2));
     iList2.get(3).setValue(((iList2.get(iList2.size() -1).getValue() + ((iList2.get(0).getValue() + iList2.get(iList2.size() - 1).getValue())/2))/2));
-    final Tuple<String, Double> y = iList.get(0);
-    final Tuple<String, Double> p = iList.get(1);
-    final Tuple<String, Double> m = iList.get(2);
-    final Tuple<String, Double> o = iList.get(3);
-    final Tuple<String, Double> x = iList.get(4);
+    final Tuple<String, Integer> y = iList.get(0);
+    final Tuple<String, Integer> p = iList.get(1);
+    final Tuple<String, Integer> m = iList.get(2);
+    final Tuple<String, Integer> o = iList.get(3);
+    final Tuple<String, Integer> x = iList.get(4);
     /** Math **/
     final double objectivePercentage = a;
     boolean Y = false;
@@ -85,8 +85,8 @@ public final class App {
     double percentage = impossibleNumber;
     int interestingIndex1 = impossibleNumber;
     int interestingIndex2 = impossibleNumber;
-    double highestNumber = impossibleNumber;
-    double lowestNumber = impossibleNumber;
+    int highestNumber = impossibleNumber;
+    int lowestNumber = impossibleNumber;
     int preciseIndex = impossibleNumber;
     double finalPercentage = impossibleNumber;
     @SuppressWarnings("serial")
@@ -251,19 +251,19 @@ public final class App {
       }
       finalBuilder = ToString(stringBuilder);
       if (Y) {
-        finalBuilder = finalBuilder.replaceAll("100\\.0", String.valueOf(iList2.get(0).getValue()));
+        finalBuilder = finalBuilder.replaceAll("\\(100\\+", "(" + String.valueOf(iList2.get(0).getValue()) + "+").replaceAll("\\+100\\)", "+" + String.valueOf(iList2.get(0).getValue()) + ")");
       }
       if (P) {
-        finalBuilder = finalBuilder.replaceAll("75\\.0", String.valueOf(iList2.get(1).getValue()));
+        finalBuilder = finalBuilder.replaceAll("\\(75\\+", "(" + String.valueOf(iList2.get(1).getValue()) + "+").replaceAll("\\+75\\)", "+" + String.valueOf(iList2.get(1).getValue()) + ")");
       }
       if (M) {
-        finalBuilder = finalBuilder.replaceAll("50\\.0", String.valueOf(iList2.get(2).getValue()));
+        finalBuilder = finalBuilder.replaceAll("\\(50\\+", "(" + String.valueOf(iList2.get(2).getValue()) + "+").replaceAll("\\+50\\)", "+" + String.valueOf(iList2.get(2).getValue()) + ")");
       }
       if (O) {
-        finalBuilder = finalBuilder.replaceAll("25\\.0", String.valueOf(iList2.get(3).getValue()));
+        finalBuilder = finalBuilder.replaceAll("\\(25\\+", "(" + String.valueOf(iList2.get(3).getValue()) + "+").replaceAll("\\+25\\)", "+" + String.valueOf(iList2.get(3).getValue()) + ")");
       }
       if (X) {
-        finalBuilder = finalBuilder.replaceAll("0\\.0", String.valueOf(iList2.get(3).getValue()));
+        finalBuilder = finalBuilder.replaceAll("\\(0\\+", "(" + String.valueOf(iList2.get(4).getValue()) + "+").replaceAll("\\+0\\)", "+" + String.valueOf(iList2.get(4).getValue()) + ")");
       }
       if (!Y && !P && !M && !O && !X) {
         throw new RuntimeException();
@@ -272,7 +272,9 @@ public final class App {
       System.out.println(Solve(finalBuilder));
     }
     else {
-      throw new RuntimeException();
+      if (preciseIndex == impossibleNumber) {
+        throw new RuntimeException();
+      }
     }
   }
   public static final String ToString (StringBuilder stringBuilder) {
@@ -298,7 +300,7 @@ public final class App {
   public static final StringBuilder BetweenTwo (final StringBuilder stringBuilder) {
     return Wrap(stringBuilder.append("/2"));
   }
-  public static final StringBuilder Sum (final StringBuilder stringBuilder, final double aNumber) {
+  public static final StringBuilder Sum (final StringBuilder stringBuilder, final int aNumber) {
     return Wrap(stringBuilder.append("+").append(aNumber));
   }
   public static final StringBuilder Sum (final StringBuilder stringBuilder, final String string) {
@@ -307,7 +309,7 @@ public final class App {
   public static final StringBuilder Sum (final StringBuilder stringBuilder1, final StringBuilder stringBuilder2) {
     return Wrap(stringBuilder1.append("+").append(stringBuilder2));
   }
-  public static final StringBuilder Sum (final StringBuilder stringBuilder, final double aNumber, final double anotherNumber) {
+  public static final StringBuilder Sum (final StringBuilder stringBuilder, final int aNumber, final int anotherNumber) {
     return Wrap(stringBuilder.append(aNumber).append("+").append(anotherNumber));
   }
   public static final StringBuilder Wrap (final StringBuilder stringBuilder) {
