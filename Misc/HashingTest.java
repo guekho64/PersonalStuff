@@ -103,7 +103,7 @@ public final class HashingTest {
             add(1);
             add(2);
         }};
-        /** The list that will contain all desired data.It'lll be converted to a SHA-256 string later**/
+        /** The list that will contain all desired data.It'll be converted to a SHA-256 string later**/
         @SuppressWarnings("serial")
         final List<Object> list = new ArrayList<Object>() {
             @Override
