@@ -23,7 +23,7 @@ import java.util.List;
 @Link <a href="http://www.guekho64.webs.com">guekho64</a>
 @License GNU AGPL v3
 
- **/
+**/
 
 public final class HashingTest {
     public static final class Local {
