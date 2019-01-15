@@ -1,8 +1,9 @@
 //TODO:Infinite Recursiveness Bug
 //TODO:Array Inside Collection toString() bug
 //TODO:SpecialList HashCode & Equals Method Override
-//TODO:https://www.codejava.net/java-core/collections/18-java-collections-and-generics-best-practices (6, 2
+//TODO:https://www.codejava.net/java-core/collections/18-java-collections-and-generics-best-practices (6, 2)
 //TODO:Create Hash Registry (Beware of choosing the right collection to subclass...)
+//TODO: [https://www.javatpoint.com/collections-in-java, https://www.geeksforgeeks.org/set-in-java/]
 
 package misc.testing;
 
