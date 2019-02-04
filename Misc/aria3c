@@ -1,3 +1,3 @@
 #!/bin/bash
 
-aria2c -c -j 16 -x 16 -s 16 --min-split-size=1M --stream-piece-selector=default -m0 --no-conf --check-integrity=true --optimize-concurrent-downloads=true --download-result=full --retry-wait=3 --file-allocation=none --max-tries=0 --lowest-speed-limit=100K "$@"
+aria2c -c -j 16 -x 16 -s 16 --min-split-size=1M --stream-piece-selector=default -m0 --no-conf --check-integrity=true --optimize-concurrent-downloads=true --download-result=full --retry-wait=3 --file-allocation=none --max-tries=0 "$@"
